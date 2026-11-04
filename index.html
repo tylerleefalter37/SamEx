@@ -9,17 +9,18 @@
 <style>
   :root {
     --bg-dark: #070605;
-    --paper-bg: #e5dfd2;
-    --paper-card: #eee7db;
-    --paper-dark: #c4b69d;
+    --paper-bg: #e6dfd1;
+    --paper-card: #eee6d8;
+    --paper-dark: #c5b69c;
     --ink: #16120f;
-    --ink-light: #584c40;
-    --crimson: #881212;
-    --crimson-bright: #ba1919;
-    --gold: #b38b34;
-    --gold-bright: #d9a93c;
-    --steel: #727c85;
+    --ink-light: #594d40;
+    --crimson: #8a1111;
+    --crimson-bright: #bc1818;
+    --gold: #b38b32;
+    --gold-bright: #d9a83d;
+    --steel: #6d7882;
     --border-ink: #332a22;
+    --copper: #9b5a32;
   }
 
   * {
@@ -46,19 +47,19 @@
     justify-content: center;
     align-items: center;
     background-image: 
-      radial-gradient(circle at 50% 15%, rgba(136, 18, 18, 0.3) 0%, transparent 70%),
-      linear-gradient(to bottom, #040303 0%, #171310 100%);
+      radial-gradient(circle at 50% 12%, rgba(138, 17, 17, 0.35) 0%, transparent 70%),
+      linear-gradient(to bottom, #030303 0%, #15110e 100%);
     padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   }
 
   #game-frame {
     width: 100%;
-    max-width: 1060px;
+    max-width: 1080px;
     height: 100%;
     max-height: 100dvh;
     background-color: var(--paper-bg);
     border: 3px solid #231b15;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.95), inset 0 0 70px rgba(80, 60, 40, 0.28);
+    box-shadow: 0 0 55px rgba(0, 0, 0, 0.98), inset 0 0 70px rgba(80, 60, 40, 0.3);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -68,7 +69,7 @@
   @media (min-width: 768px) {
     #game-frame {
       height: 94dvh;
-      max-height: 780px;
+      max-height: 800px;
       border: 8px solid #231b15;
       border-radius: 6px;
     }
@@ -107,7 +108,7 @@
   .title-group span {
     font-size: 10px;
     letter-spacing: 1.5px;
-    color: #998e80;
+    color: #9c9182;
     display: block;
   }
 
@@ -152,7 +153,7 @@
 
   @media (min-width: 768px) {
     .screen {
-      padding: 18px 26px;
+      padding: 18px 24px;
     }
   }
 
@@ -160,8 +161,8 @@
     background: #1a1410;
     color: var(--paper-bg);
     border: 2px solid var(--gold);
-    padding: 10px 18px;
-    font-size: clamp(12px, 3.2vw, 14px);
+    padding: 9px 16px;
+    font-size: clamp(12px, 3.2vw, 13.5px);
     letter-spacing: 1.5px;
     cursor: pointer;
     text-transform: uppercase;
@@ -175,6 +176,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 6px;
   }
 
   .btn:active {
@@ -184,7 +186,7 @@
 
   .btn-gold {
     background: var(--gold);
-    color: #110d0b;
+    color: #120e0b;
     border-color: #f2cf77;
   }
 
@@ -192,6 +194,12 @@
     background: var(--crimson);
     border-color: #ff6666;
     color: #ffffff;
+  }
+
+  .btn-copper {
+    background: #2b1f18;
+    color: #e09f67;
+    border-color: #b06a3b;
   }
 
   /* TITLE SCREEN */
@@ -240,7 +248,7 @@
   @media (min-width: 768px) {
     .dossier-layout {
       flex-direction: row;
-      gap: 20px;
+      gap: 18px;
     }
   }
 
@@ -248,23 +256,23 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    flex: 0.9;
+    flex: 0.85;
   }
 
   .filter-bar {
     display: flex;
-    gap: 6px;
+    gap: 5px;
     overflow-x: auto;
     padding-bottom: 4px;
     -webkit-overflow-scrolling: touch;
   }
 
   .filter-chip {
-    padding: 4px 9px;
-    font-size: 10px;
+    padding: 4px 8px;
+    font-size: 9.5px;
     font-weight: bold;
     text-transform: uppercase;
-    background: rgba(215, 205, 185, 0.8);
+    background: rgba(215, 205, 185, 0.85);
     border: 1px solid var(--border-ink);
     border-radius: 3px;
     cursor: pointer;
@@ -291,7 +299,7 @@
       flex-direction: column;
       overflow-y: auto;
       overflow-x: hidden;
-      max-height: 480px;
+      max-height: 490px;
     }
   }
 
@@ -324,12 +332,12 @@
   }
 
   .case-item-info h4 {
-    font-size: 13px;
+    font-size: 12.5px;
     line-height: 1.2;
   }
 
   .case-item-info span {
-    font-size: 10px;
+    font-size: 9.5px;
     color: #6d6355;
     display: none;
   }
@@ -343,7 +351,7 @@
   }
 
   .caste-badge {
-    font-size: 9px;
+    font-size: 8.5px;
     padding: 2px 5px;
     border-radius: 2px;
     font-weight: bold;
@@ -357,12 +365,15 @@
   .caste-samurai { background: #35475e; color: #fff; }
   .caste-warlord { background: #752727; color: #fff; }
   .caste-shogunate { background: #573177; color: #fff; }
+  .caste-cleric { background: #84672a; color: #fff; }
+  .caste-outlaw { background: #364440; color: #fff; }
 
+  /* DOSSIER MAIN & UKIYO-E PORTRAIT CANVAS */
   .dossier-main {
-    flex: 1.3;
+    flex: 1.35;
     background: var(--paper-card);
     border: 2px solid var(--border-ink);
-    padding: 16px;
+    padding: 14px 16px;
     display: flex;
     flex-direction: column;
     box-shadow: inset 0 0 16px rgba(0,0,0,0.06);
@@ -371,37 +382,57 @@
     min-height: 0;
   }
 
-  .vermilion-seal {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    width: 62px;
-    height: 62px;
-    border: 3px solid var(--crimson);
-    color: var(--crimson);
-    font-size: 10px;
-    font-weight: 900;
+  .dossier-top-split {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: rotate(11deg);
-    border-radius: 4px;
-    letter-spacing: 1.5px;
-    opacity: 0.85;
-    pointer-events: none;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .portrait-frame {
+    width: 110px;
+    height: 140px;
+    border: 2px solid var(--border-ink);
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.25);
+    background: #e8dfd0;
+    flex-shrink: 0;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  #portrait-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .portrait-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(22, 18, 15, 0.88);
+    color: var(--gold);
+    font-size: 8.5px;
+    letter-spacing: 1px;
     text-align: center;
-    line-height: 1.1;
+    padding: 2px 0;
+    font-family: monospace;
+  }
+
+  .dossier-info-block {
+    flex: 1;
+    min-width: 0;
   }
 
   .case-meta-header {
     border-bottom: 2px solid var(--border-ink);
-    padding-bottom: 8px;
-    margin-bottom: 10px;
-    padding-right: 70px;
+    padding-bottom: 6px;
+    margin-bottom: 8px;
   }
 
   .case-code {
-    font-size: 10px;
+    font-size: 9.5px;
     letter-spacing: 1.5px;
     color: var(--crimson);
     font-weight: bold;
@@ -415,30 +446,30 @@
   }
 
   .condemned-name {
-    font-size: clamp(20px, 5vw, 25px);
+    font-size: clamp(18px, 4.2vw, 24px);
     font-weight: bold;
     color: var(--ink);
   }
 
   .condemned-alias {
-    font-size: 12px;
+    font-size: 11.5px;
     color: #635649;
     font-style: italic;
   }
 
   .spec-grid {
     display: grid;
-    grid-template-columns: 95px 1fr;
-    row-gap: 5px;
-    font-size: 12px;
-    line-height: 1.35;
+    grid-template-columns: 88px 1fr;
+    row-gap: 4px;
+    font-size: 11.5px;
+    line-height: 1.3;
   }
 
   .spec-label {
     font-weight: bold;
     color: #4f4236;
     text-transform: uppercase;
-    font-size: 10px;
+    font-size: 9.5px;
   }
 
   .spec-val {
@@ -447,10 +478,10 @@
 
   .dossier-body {
     margin-top: 8px;
-    padding-top: 8px;
+    padding-top: 6px;
     border-top: 1px dashed var(--border-ink);
-    font-size: 12px;
-    line-height: 1.5;
+    font-size: 11.5px;
+    line-height: 1.45;
     color: #2b231c;
     overflow-y: auto;
     flex-grow: 1;
@@ -458,19 +489,105 @@
   }
 
   .dossier-actions {
-    margin-top: 12px;
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* BLACKSMITH & ARMORY FORGE */
+  #screen-forge {
+    background: #15110d;
+    color: var(--paper-bg);
+  }
+
+  .forge-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  @media (min-width: 768px) {
+    .forge-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+  }
+
+  .forge-category {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid #4d3f32;
+    padding: 12px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .forge-cat-title {
+    font-size: 11.5px;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    color: var(--gold-bright);
+    text-transform: uppercase;
+    border-bottom: 1px solid #3d3024;
+    padding-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .upgrade-card {
+    background: #1c1713;
+    border: 1px solid #443729;
+    padding: 8px 10px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 10px;
   }
 
-  /* PREPARATION & ANATOMICAL RITE */
+  .upgrade-card.maxed {
+    border-color: var(--gold);
+    background: #252019;
+  }
+
+  .upgrade-info h4 {
+    font-size: 12px;
+    color: var(--paper-bg);
+  }
+
+  .upgrade-info p {
+    font-size: 10px;
+    color: #a39584;
+    line-height: 1.3;
+  }
+
+  .upgrade-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .upgrade-cost {
+    font-size: 10.5px;
+    font-weight: bold;
+    color: var(--gold-bright);
+  }
+
+  /* PREPARATION & STAGING */
   .prep-grid {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
     height: 100%;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -480,7 +597,7 @@
     .prep-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 22px;
+      gap: 20px;
       overflow-y: visible;
     }
   }
@@ -488,7 +605,7 @@
   .method-column {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 7px;
     overflow-y: auto;
   }
 
@@ -507,7 +624,7 @@
   .method-card {
     background: rgba(255, 255, 255, 0.65);
     border: 2px solid var(--border-ink);
-    padding: 10px 12px;
+    padding: 8px 11px;
     cursor: pointer;
     border-radius: 4px;
     position: relative;
@@ -527,33 +644,33 @@
   }
 
   .card-top {
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: bold;
     display: flex;
     justify-content: space-between;
   }
 
   .card-sub {
-    font-size: 10px;
+    font-size: 9.5px;
     color: #746859;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
 
   .card-desc {
-    font-size: 11px;
+    font-size: 10.5px;
     line-height: 1.35;
   }
 
-  /* NEW MECHANIC: STAGING & JISEI SCREEN */
+  /* STAGING & JISEI */
   #screen-staging {
-    background: #191512;
+    background: #181410;
     color: var(--paper-bg);
   }
 
   .staging-container {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
     height: 100%;
     overflow-y: auto;
   }
@@ -562,55 +679,55 @@
     .staging-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 18px;
     }
   }
 
   .staging-panel {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--gold);
-    padding: 14px;
+    padding: 12px;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
   }
 
   .jisei-scroll {
-    background: #2c251e;
+    background: #29221a;
     border: 1px dashed var(--gold);
-    padding: 12px 14px;
+    padding: 10px 12px;
     border-radius: 4px;
     color: var(--paper-bg);
     font-style: italic;
-    font-size: 13px;
-    line-height: 1.6;
+    font-size: 12px;
+    line-height: 1.55;
     text-align: center;
   }
 
   .staging-option-group {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
   }
 
   .staging-btn-card {
     background: #110e0c;
     border: 1px solid #44382c;
-    padding: 8px 12px;
+    padding: 7px 10px;
     border-radius: 3px;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 10.5px;
     transition: all 0.15s;
   }
 
   .staging-btn-card.active {
     border-color: var(--gold-bright);
-    background: #2c2117;
+    background: #2b2016;
     color: var(--gold-bright);
   }
 
-  /* DUAL-PHASE EXECUTION STAGE */
+  /* EXECUTION SCREEN */
   #screen-execution {
     padding: 10px 12px;
     background: #0c0a09;
@@ -655,7 +772,7 @@
     z-index: 12;
     background: rgba(18, 14, 12, 0.94);
     border: 1px solid var(--gold);
-    padding: 12px 14px;
+    padding: 10px 14px;
     border-radius: 4px;
   }
 
@@ -670,11 +787,11 @@
 
   .action-meter-track {
     width: 100%;
-    height: 34px;
+    height: 32px;
     background: #231b16;
     border: 2px solid #524436;
     position: relative;
-    margin: 8px 0 10px 0;
+    margin: 6px 0 8px 0;
     border-radius: 3px;
     overflow: hidden;
   }
@@ -709,7 +826,7 @@
   .action-button-row {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     align-items: center;
   }
 
@@ -721,7 +838,7 @@
   }
 
   .action-hint {
-    font-size: 11px;
+    font-size: 10.5px;
     color: #c7bcab;
     font-style: italic;
     text-align: center;
@@ -729,8 +846,8 @@
 
   #execute-trigger-btn {
     width: 100%;
-    padding: 12px 28px;
-    font-size: clamp(13px, 3.8vw, 15px);
+    padding: 10px 24px;
+    font-size: clamp(12.5px, 3.6vw, 14.5px);
     background: var(--crimson);
     border-color: #ff5555;
     color: #fff;
@@ -745,59 +862,72 @@
     text-align: center;
     background: radial-gradient(circle, rgba(235, 230, 218, 0.98) 0%, rgba(200, 185, 160, 0.98) 100%);
     justify-content: center;
-    padding: 16px;
+    padding: 14px;
   }
 
   .result-header {
     border-bottom: 2px solid var(--border-ink);
-    padding-bottom: 8px;
-    margin-bottom: 12px;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
   }
 
   .result-verdict {
-    font-size: clamp(20px, 6vw, 30px);
+    font-size: clamp(18px, 5.5vw, 26px);
     color: var(--crimson);
     letter-spacing: 2px;
     font-weight: 900;
   }
 
   .result-sub {
-    font-size: 11px;
+    font-size: 10.5px;
     color: #55483a;
     letter-spacing: 1.5px;
   }
 
   .result-scroll {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.72);
     border: 2px solid var(--border-ink);
-    padding: 14px 18px;
+    padding: 12px 16px;
     max-width: 720px;
-    margin: 0 auto 14px auto;
+    margin: 0 auto 10px auto;
     text-align: left;
-    font-size: clamp(12px, 3vw, 13.5px);
-    line-height: 1.6;
+    font-size: clamp(11.5px, 2.8vw, 13px);
+    line-height: 1.5;
     box-shadow: inset 0 0 15px rgba(0,0,0,0.06);
     border-radius: 4px;
-    max-height: 48vh;
+    max-height: 44vh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
 
+  .bounty-reward-box {
+    margin-top: 8px;
+    padding: 6px 10px;
+    background: #1e1914;
+    border: 1px solid var(--gold);
+    color: var(--gold-bright);
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11.5px;
+    border-radius: 3px;
+  }
+
   .registry-record {
-    margin-top: 12px;
-    padding: 9px 12px;
+    margin-top: 8px;
+    padding: 8px 10px;
     background: #191410;
     color: var(--gold-bright);
     border-left: 3px solid var(--crimson);
     font-family: monospace;
-    font-size: 11px;
+    font-size: 10.5px;
     letter-spacing: 0.5px;
   }
 
   .btn-row {
     display: flex;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
   }
 
@@ -825,7 +955,11 @@
     </div>
     <div class="stats-bar">
       <div class="stat-item">
-        <span>HONOR</span>
+        <span>TREASURY</span>
+        <span class="stat-val" id="stat-ryo" style="color: var(--gold-bright);">0 両</span>
+      </div>
+      <div class="stat-item">
+        <span>LINEAGE HONOR</span>
         <span class="stat-val" id="stat-honor">100</span>
       </div>
       <div class="stat-item">
@@ -842,9 +976,10 @@
     <p class="title-desc">
       Under the <em>Kujikata Osadamegaki</em>, punishment reflects the cosmic hierarchy of caste. As Yamada Asaemon, hereditary tester of Shogunate steel and executioner of Edo, you oversee death across the realm: from rebel peasants boiled in cauldrons, to corrupted warlords severed at the waist, to treacherous daimyō granted honorable kaishaku decapitation.
     </p>
-    <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
       <button class="btn btn-crimson" onclick="Game.openDossierScreen()">Inspect Criminal Registry</button>
-      <button class="btn btn-gold" onclick="Game.generateBatchAndOpen()">Generate 10 New Condemned</button>
+      <button class="btn btn-copper" onclick="Game.openForgeScreen()">Armory Workshop & Forge</button>
+      <button class="btn btn-gold" onclick="Game.generateBatchAndOpen()">Generate 10 New Warrants</button>
     </div>
   </div>
 
@@ -854,69 +989,102 @@
       
       <div class="dossier-sidebar">
         <div class="filter-bar">
-          <div class="filter-chip active" data-caste="ALL" onclick="Game.filterCaste('ALL')">ALL CASTES</div>
+          <div class="filter-chip active" data-caste="ALL" onclick="Game.filterCaste('ALL')">ALL</div>
           <div class="filter-chip" data-caste="WARLORD" onclick="Game.filterCaste('WARLORD')">WARLORDS</div>
           <div class="filter-chip" data-caste="SHOGUNATE" onclick="Game.filterCaste('SHOGUNATE')">SHOGUNATE</div>
           <div class="filter-chip" data-caste="SAMURAI" onclick="Game.filterCaste('SAMURAI')">SAMURAI</div>
           <div class="filter-chip" data-caste="RONIN" onclick="Game.filterCaste('RONIN')">RŌNIN</div>
+          <div class="filter-chip" data-caste="CLERIC" onclick="Game.filterCaste('CLERIC')">CLERGY</div>
+          <div class="filter-chip" data-caste="OUTLAW" onclick="Game.filterCaste('OUTLAW')">OUTLAWS</div>
           <div class="filter-chip" data-caste="PEASANT" onclick="Game.filterCaste('PEASANT')">PEASANTS</div>
         </div>
 
         <div class="case-list" id="case-list-container"></div>
 
-        <button class="btn" style="margin-top: 4px; padding: 6px 12px; font-size: 11px;" onclick="Game.summonProceduralCriminal()">
+        <button class="btn" style="margin-top: 2px; padding: 6px 10px; font-size: 10px;" onclick="Game.summonProceduralCriminal()">
           + Issue Shogunate Warrant
         </button>
       </div>
 
       <div class="dossier-main">
-        <div class="vermilion-seal" id="doc-seal">CRIMINAL<br>SEALED</div>
-
-        <div class="case-meta-header">
-          <div class="case-code" id="doc-code">REGISTRY #419 · EDO BUGYŌ-SHO</div>
-          <div class="condemned-title-row">
-            <span class="condemned-name" id="doc-name">Okada Magoroku</span>
-            <span class="condemned-alias" id="doc-alias">"The Red Wolf of Hachioji"</span>
+        <div class="dossier-top-split">
+          <div class="portrait-frame">
+            <canvas id="portrait-canvas" width="110" height="140"></canvas>
+            <div class="portrait-label" id="portrait-code-label">REGISTRY #419</div>
           </div>
-        </div>
 
-        <div class="spec-grid">
-          <div class="spec-label">Social Caste:</div>
-          <div class="spec-val" id="doc-caste">Masterless Rōnin</div>
+          <div class="dossier-info-block">
+            <div class="case-meta-header">
+              <div class="case-code" id="doc-code">REGISTRY #419 · EDO BUGYŌ-SHO</div>
+              <div class="condemned-title-row">
+                <span class="condemned-name" id="doc-name">Okada Magoroku</span>
+                <span class="condemned-alias" id="doc-alias">"The Red Wolf of Hachioji"</span>
+              </div>
+            </div>
 
-          <div class="spec-label">Jurisdiction:</div>
-          <div class="spec-val" id="doc-court">Minami-chō Town Magistrate</div>
+            <div class="spec-grid">
+              <div class="spec-label">Social Caste:</div>
+              <div class="spec-val" id="doc-caste">Masterless Rōnin</div>
 
-          <div class="spec-label">Convicted Crime:</div>
-          <div class="spec-val" id="doc-crime" style="color: #7b1818; font-weight: bold;">Rice Convoy Ambush</div>
+              <div class="spec-label">Jurisdiction:</div>
+              <div class="spec-val" id="doc-court">Minami-chō Town Magistrate</div>
 
-          <div class="spec-label">Prescribed Rite:</div>
-          <div class="spec-val" id="doc-punishment" style="font-weight: bold;">Zanshu Decapitation</div>
+              <div class="spec-label">Convicted Crime:</div>
+              <div class="spec-val" id="doc-crime" style="color: #7b1818; font-weight: bold;">Rice Convoy Ambush</div>
 
-          <div class="spec-label">Mind Demeanor:</div>
-          <div class="spec-val" id="doc-demeanor" style="color: var(--crimson); font-weight: bold;">Stoic</div>
+              <div class="spec-label">Prescribed Rite:</div>
+              <div class="spec-val" id="doc-punishment" style="font-weight: bold;">Zanshu Decapitation</div>
 
-          <div class="spec-label">Body Density:</div>
-          <div class="spec-val" id="doc-physique">Dense vertebrae</div>
+              <div class="spec-label">Mind Demeanor:</div>
+              <div class="spec-val" id="doc-demeanor" style="color: var(--crimson); font-weight: bold;">Stoic</div>
+
+              <div class="spec-label">Body Density:</div>
+              <div class="spec-val" id="doc-physique">Dense vertebrae</div>
+            </div>
+          </div>
         </div>
 
         <div class="dossier-body" id="doc-narrative"></div>
 
         <div class="dossier-actions">
           <button class="btn" style="background: transparent; border-color: #665; color: #887;" onclick="Game.openTitleScreen()">Title</button>
-          <button class="btn btn-crimson" onclick="Game.openPrepScreen()">Configure Armament & Rite</button>
+          <button class="btn btn-copper" onclick="Game.openForgeScreen()">Armory Forge</button>
+          <button class="btn btn-crimson" onclick="Game.openPrepScreen()">Select Weapon & Procedure</button>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- 3. WEAPON & PROCEDURE PREPARATION SCREEN -->
+  <!-- 3. ARMORY WORKSHOP & BLACKSMITH FORGE -->
+  <div id="screen-forge" class="screen">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--gold); padding-bottom: 6px; margin-bottom: 12px;">
+      <div>
+        <h2 style="font-size: 16px; color: var(--gold-bright); letter-spacing: 2px; text-transform: uppercase;">Yamada Armory Forge · 鍛冶研磨処</h2>
+        <span style="font-size: 10px; color: #9c9182;">Enhance blade geometries, silk tsuka wraps, and executioner rigs with Shogunate Ryō.</span>
+      </div>
+      <div style="text-align: right;">
+        <span style="font-size: 10px; color: #9c9182;">TREASURY:</span>
+        <span id="forge-ryo-display" style="font-size: 15px; font-weight: bold; color: var(--gold-bright); margin-left: 6px;">0 両</span>
+      </div>
+    </div>
+
+    <div class="forge-grid" id="forge-items-container">
+      <!-- Populated dynamically with Forge trees -->
+    </div>
+
+    <div style="margin-top: 12px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;">
+      <button class="btn" style="background: transparent; border-color: #665; color: #887;" onclick="Game.openDossierScreen()">Back to Registry</button>
+      <button class="btn btn-crimson" onclick="Game.openPrepScreen()">Proceed to Yard Weaponry</button>
+    </div>
+  </div>
+
+  <!-- 4. WEAPON & PROCEDURE PREPARATION SCREEN -->
   <div id="screen-prep" class="screen">
     <div class="prep-grid">
       <div class="method-column">
         <div class="column-heading">
-          <span>1. Execution Armament</span>
+          <span>1. Execution Armament (14 Weapons)</span>
           <span id="selected-weapon-name" style="color: var(--gold-bright);">KATANA</span>
         </div>
         <div id="weapon-cards-container"></div>
@@ -924,7 +1092,7 @@
 
       <div class="method-column">
         <div class="column-heading">
-          <span>2. Judicial Rite</span>
+          <span>2. Judicial Rite (13 Procedures)</span>
           <span id="selected-method-name" style="color: var(--crimson);">RITE</span>
         </div>
         <div id="method-cards-container"></div>
@@ -937,19 +1105,18 @@
     </div>
   </div>
 
-  <!-- NEW SCREEN: ANATOMICAL STAGING, DEATH POEM & INTERROGATION -->
+  <!-- 5. ANATOMICAL STAGING, DEATH POEM & INTERROGATION -->
   <div id="screen-staging" class="screen">
     <div class="staging-container">
       
-      <!-- Left: Prisoner State & Death Poem -->
       <div class="staging-panel">
         <div class="column-heading">
           <span>Final Hearing & Death Poem (辞世の句)</span>
           <span id="staging-condemned-demeanor" style="color: var(--gold-bright);">STOIC</span>
         </div>
 
-        <p style="font-size: 11.5px; line-height: 1.5; color: #ccc;">
-          Under Edo custom, high samurai and reflective brigands are granted ink or silence to voice their last parting verse. Observing their spirit reveals their cervical tension.
+        <p style="font-size: 11px; line-height: 1.45; color: #ccc;">
+          Under Edo custom, high samurai, tragic poets, and defiant outlaws are granted ink to voice their parting death verse (*Jisei*). Observing their spirit reveals their spine and carotid tension.
         </p>
 
         <div class="jisei-scroll" id="jisei-display">
@@ -957,9 +1124,9 @@
         </div>
 
         <div class="staging-option-group">
-          <span style="font-size: 10px; color: var(--gold); font-weight: bold; text-transform: uppercase;">Interrogation / Psychological Stance:</span>
+          <span style="font-size: 9.5px; color: var(--gold); font-weight: bold; text-transform: uppercase;">Interrogation / Psychological Stance:</span>
           <div class="staging-btn-card active" id="interrogate-opt-0" onclick="Game.setInterrogationOption(0)">
-            <strong>Grant Silent Solitude:</strong> Leaves neck relaxed; reduces rapid oscillation of the breathing meter.
+            <strong>Grant Silent Solitude:</strong> Leaves neck relaxed; calms breathing meter cycle.
           </div>
           <div class="staging-btn-card" id="interrogate-opt-1" onclick="Game.setInterrogationOption(1)">
             <strong>Challenge the Convict's Fealty:</strong> Rouses defiance; vertebrae harden but timing window widens.
@@ -967,7 +1134,6 @@
         </div>
       </div>
 
-      <!-- Right: Sand Yard Isolation & Platform Rig -->
       <div class="staging-panel">
         <div class="column-heading">
           <span>Platform Rigging & Purification</span>
@@ -975,7 +1141,7 @@
         </div>
 
         <div class="staging-option-group">
-          <span style="font-size: 10px; color: var(--gold); font-weight: bold; text-transform: uppercase;">1. Platform Soil & Tether Rig:</span>
+          <span style="font-size: 9.5px; color: var(--gold); font-weight: bold; text-transform: uppercase;">1. Platform Soil & Tether Rig:</span>
           <div class="staging-btn-card active" id="platform-opt-0" onclick="Game.setPlatformOption(0)">
             <strong>Standard Kodenma-chō Sand Pit:</strong> Neutral conditions. Balanced blade feedback.
           </div>
@@ -985,7 +1151,7 @@
         </div>
 
         <div class="staging-option-group">
-          <span style="font-size: 10px; color: var(--gold); font-weight: bold; text-transform: uppercase;">2. Executor Purification (Mizugori & Incense):</span>
+          <span style="font-size: 9.5px; color: var(--gold); font-weight: bold; text-transform: uppercase;">2. Executor Purification (Mizugori & Incense):</span>
           <div class="staging-btn-card active" id="purify-opt-0" onclick="Game.setPurificationOption(0)">
             <strong>Cold Well Purification (打ち水):</strong> Calms your pulse. Expands sweet-spot tolerance by +20%.
           </div>
@@ -1003,7 +1169,7 @@
     </div>
   </div>
 
-  <!-- 4. DUAL-PHASE INTERACTIVE EXECUTION STAGE -->
+  <!-- 6. DUAL-PHASE INTERACTIVE EXECUTION STAGE -->
   <div id="screen-execution" class="screen">
     <div class="exec-canvas-container" id="exec-canvas-box" onclick="Game.onCanvasClick(event)">
       <canvas id="execution-canvas"></canvas>
@@ -1033,7 +1199,7 @@
     </div>
   </div>
 
-  <!-- 5. RESULT & VERDICT RECORD -->
+  <!-- 7. RESULT & VERDICT RECORD -->
   <div id="screen-result" class="screen">
     <div class="result-header">
       <div class="result-sub">SHOGUNATE OFFICIAL EXECUTION SCROLL · 徳川幕府 処刑録</div>
@@ -1042,11 +1208,18 @@
 
     <div class="result-scroll">
       <p id="res-narrative"></p>
+      
+      <div class="bounty-reward-box">
+        <span>JUDICIAL STIPEND & BOUNTY PAID:</span>
+        <span id="res-bounty-val">+0 両</span>
+      </div>
+
       <div class="registry-record" id="res-record"></div>
     </div>
 
     <div class="btn-row">
-      <button class="btn" onclick="Game.openDossierScreen()">Return to Criminal Registry</button>
+      <button class="btn btn-copper" onclick="Game.openForgeScreen()">Armory Workshop</button>
+      <button class="btn" onclick="Game.openDossierScreen()">Return to Registry</button>
       <button class="btn btn-gold" onclick="Game.summonProceduralCriminal(); Game.openDossierScreen();">Summon Next Warrant</button>
     </div>
   </div>
@@ -1055,37 +1228,48 @@
 
 <script>
 // ==========================================
-// 1. PROCEDURAL GENERATION ENGINE
+// 1. PROCEDURAL GENERATION ENGINE (12 Castes)
 // ==========================================
 const Procedural = {
   castes: [
-    { key: "PEASANT", label: "Peasant Cultivator (Hyakushō)", badgeClass: "caste-peasant", weight: 35 },
-    { key: "MERCHANT", label: "Town Artisan & Merchant (Chōnin)", badgeClass: "caste-merchant", weight: 25 },
-    { key: "RONIN", label: "Masterless Outlaw (Rōnin)", badgeClass: "caste-ronin", weight: 20 },
-    { key: "SAMURAI", label: "Direct Shogunate Retainer (Hatamoto / Buke)", badgeClass: "caste-samurai", weight: 12 },
+    { key: "PEASANT", label: "Peasant Cultivator (Hyakushō)", badgeClass: "caste-peasant", weight: 20 },
+    { key: "MERCHANT", label: "Town Artisan & Merchant (Chōnin)", badgeClass: "caste-merchant", weight: 16 },
+    { key: "RONIN", label: "Masterless Outlaw (Rōnin)", badgeClass: "caste-ronin", weight: 14 },
+    { key: "SAMURAI", label: "Direct Shogunate Retainer (Hatamoto / Buke)", badgeClass: "caste-samurai", weight: 10 },
     { key: "WARLORD", label: "Rebellious Feudal Lord (Daimyō)", badgeClass: "caste-warlord", weight: 6 },
-    { key: "SHOGUNATE", label: "High Bakufu Elder / Corrupt Regent", badgeClass: "caste-shogunate", weight: 2 }
+    { key: "SHOGUNATE", label: "High Bakufu Elder / Corrupt Regent", badgeClass: "caste-shogunate", weight: 4 },
+    { key: "DAIKAN", label: "Corrupt Domain Magistrate (Daikan)", badgeClass: "caste-samurai", weight: 8 },
+    { key: "ASHIGARU", label: "Deserter Foot Soldier (Ashigaru)", badgeClass: "caste-ronin", weight: 8 },
+    { key: "ASSASSIN", label: "Geisha Conspirator / Kunoichi", badgeClass: "caste-outlaw", weight: 5 },
+    { key: "KABUKI", label: "Subversive Kabuki Playwright", badgeClass: "caste-merchant", weight: 5 },
+    { key: "CLERIC", label: "Apostate Yamabushi Rogue Ascetic", badgeClass: "caste-cleric", weight: 4 },
+    { key: "SMUGGLER", label: "Wakō Sea Smuggler Captain", badgeClass: "caste-outlaw", weight: 5 }
   ],
 
   firstNamesMale: [
     "Magoroku", "Denbei", "Jurobei", "Noritaka", "Kuranosuke", "Sadatoki", "Yojiro",
     "Goemon", "Katsunari", "Shichisaburo", "Toshizo", "Munetoki", "Genzo", "Katsuhide",
-    "Genzaburo", "Hikosaburo", "Kanzaburo", "Chotaro", "Heihachiro", "Nobukatsu", "Masahito"
+    "Genzaburo", "Hikosaburo", "Kanzaburo", "Chotaro", "Heihachiro", "Nobukatsu", "Masahito",
+    "Toranosuke", "Emon", "Saemon", "Hyosuke", "Seibei", "Ukyō", "Kuroemon"
   ],
   firstNamesFemale: [
-    "O-Sayo", "O-Kiku", "O-Tane", "O-Fumi", "O-Hatsu", "O-Yuki", "O-Rin", "O-Tatsu"
+    "O-Sayo", "O-Kiku", "O-Tane", "O-Fumi", "O-Hatsu", "O-Yuki", "O-Rin", "O-Tatsu",
+    "O-Shino", "O-Kiyo", "O-Ryu", "O-Tsune"
   ],
   surnamesCommon: [
-    "of Nihonbashi", "of Fukagawa", "of Shinagawa", "of Tonegawa", "of Senju", "of Asakusa", "of Minowa", "of Itabashi"
+    "of Nihonbashi", "of Fukagawa", "of Shinagawa", "of Tonegawa", "of Senju", "of Asakusa", 
+    "of Minowa", "of Itabashi", "of Yoshiwara", "of Ryōgoku", "of Honjo", "of Tsukiji"
   ],
   surnamesNoble: [
-    "Matsudaira", "Honda", "Okubo", "Ogasawara", "Mizuno", "Abe", "Yanagisawa", "Ii", "Date", "Sakai", "Toda"
+    "Matsudaira", "Honda", "Okubo", "Ogasawara", "Mizuno", "Abe", "Yanagisawa", "Ii", 
+    "Date", "Sakai", "Toda", "Hotta", "Makino", "Inaba", "Sanada", "Torii"
   ],
 
   aliases: [
     "The Red Wolf", "The River Rat", "The Silent Viper", "The Iron Ox", "The Smoldering Silk",
     "The Night Shadow", "The Cormorant", "The Fox of Kai", "The Defiant Boar", "The Treasonous Hawk",
-    "The Ashen Monk", "The Gold Weevil", "The Barrier Breaker", "The Ghost of Suzugamori"
+    "The Ashen Monk", "The Gold Weevil", "The Barrier Breaker", "The Ghost of Suzugamori",
+    "The Black Tide", "The Poison Lotus", "The Bell Striker", "The Mask of Dejima"
   ],
 
   demeanors: ["Stoic", "Defiant", "Broken", "Enraged"],
@@ -1096,7 +1280,9 @@ const Procedural = {
     "Though my neck parts under steel, / The fire within my heart / Shall burn Edo to ash.",
     "A guest upon this earth, / I leave no footprints on the sand / But a crimson spray.",
     "The wind blows through pines, / Asking who ruled the realm; / Only the void answers.",
-    "Bound in rough hemp cord, / I smile at the executioner's edge; / The blade knows no sorrow."
+    "Bound in rough hemp cord, / I smile at the executioner's edge; / The blade knows no sorrow.",
+    "Rain strikes the wooden bucket; / The body returns to clay, / The spirit returns to smoke.",
+    "Gold coins turned to dross, / Steel remains unbent and true; / Farewell, floating world."
   ],
 
   courts: [
@@ -1105,41 +1291,60 @@ const Procedural = {
     "Supreme Judicial Chamber (Hyōjōsho)",
     "Senior Shogunate Council (Rōjū Edi)",
     "Kantō Gundai (Regional Deputy of the Eight Provinces)",
-    "Kanpaku Imperial Envoy Court"
+    "Kanpaku Imperial Envoy Court",
+    "Nagasaki Bugyō Foreign Tribunal"
   ],
 
   eras: ["Kyōhō", "Genroku", "Meiwa", "Temmei", "Kansei", "Bunka", "Tenpō"],
 
   casteCrimes: {
     PEASANT: [
-      { crime: "Organizing an armed peasant petition (Hyakushō Ikki) and setting ledger fires.", punishment: "Haritsuke (Cross-Spear Crucifixion)", defaultMethod: "haritsuke", defaultWeapon: "yari" },
-      { crime: "Forging barrier passes and smuggling runaway cultivators past the Hakone checkpoint.", punishment: "Zanshu Decapitation & Suzugamori Pillory", defaultMethod: "zanshu", defaultWeapon: "katana_kanemoto" },
-      { crime: "Desecrating a sacred Tokugawa shrine and setting night torches during severe drought.", punishment: "Kanabō-uchi (Bone-Crushing Execution)", defaultMethod: "kanabo_smash", defaultWeapon: "kanabo" }
+      { crime: "Organizing an armed peasant petition (Hyakushō Ikki) and setting ledger fires.", punishment: "Haritsuke (Cross-Spear Crucifixion)", defaultMethod: "haritsuke", defaultWeapon: "yari", bounty: 15 },
+      { crime: "Forging barrier passes and smuggling runaway cultivators past the Hakone checkpoint.", punishment: "Zanshu Decapitation & Suzugamori Pillory", defaultMethod: "zanshu", defaultWeapon: "katana_kanemoto", bounty: 12 },
+      { crime: "Desecrating a sacred Tokugawa shrine and setting night torches during severe drought.", punishment: "Kanabō-uchi (Bone-Crushing Execution)", defaultMethod: "kanabo_smash", defaultWeapon: "kanabo", bounty: 14 }
     ],
     MERCHANT: [
-      { crime: "Mass counterfeiting of Tokugawa Koban gold coins by melting brass alloys.", punishment: "Kamayude (Boiled in Cast-Iron Cauldron)", defaultMethod: "kamayude", defaultWeapon: "cauldron" },
-      { crime: "Hōka (Arson) of rice granaries to artificially inflate grain costs in famine.", punishment: "Zanshu & Post-Mortem Pelvis Slicing", defaultMethod: "ryo_kuruma", defaultWeapon: "katana_dodanuki" },
-      { crime: "Smuggling forbidden Portuguese matchlocks and opium into Nagasaki bay.", punishment: "Dō-giri (Bisecting in Half at the Waist)", defaultMethod: "dogiri", defaultWeapon: "nodachi" }
+      { crime: "Mass counterfeiting of Tokugawa Koban gold coins by melting brass alloys.", punishment: "Kamayude (Boiled in Cast-Iron Cauldron)", defaultMethod: "kamayude", defaultWeapon: "cauldron", bounty: 22 },
+      { crime: "Hōka (Arson) of rice granaries to artificially inflate grain costs in famine.", punishment: "Zanshu & Post-Mortem Pelvis Slicing", defaultMethod: "ryo_kuruma", defaultWeapon: "katana_dodanuki", bounty: 18 },
+      { crime: "Smuggling forbidden Portuguese matchlocks and opium into Nagasaki bay.", punishment: "Dō-giri (Bisecting in Half at the Waist)", defaultMethod: "dogiri", defaultWeapon: "nodachi", bounty: 25 }
     ],
     RONIN: [
-      { crime: "Highway ambush of tax rice transport and the direct slaying of an appointed Dōshin.", punishment: "Zanshu Decapitation & Suzugamori Head Pillory", defaultMethod: "zanshu", defaultWeapon: "katana_kanemoto" },
-      { crime: "Serving as blood-mercenaries plotting the murder of the City Magistrate.", punishment: "Ya-tsurushi (Tethered War Archery Execution)", defaultMethod: "archery_volley", defaultWeapon: "daikyu" },
-      { crime: "Extortion of foreign Dutch envoys and desecration of the Shogunate vermilion seal.", punishment: "Kanabō-uchi (Crushing by Studded Iron Club)", defaultMethod: "kanabo_smash", defaultWeapon: "kanabo" }
+      { crime: "Highway ambush of tax rice transport and the direct slaying of an appointed Dōshin.", punishment: "Zanshu Decapitation & Suzugamori Head Pillory", defaultMethod: "zanshu", defaultWeapon: "katana_kanemoto", bounty: 20 },
+      { crime: "Serving as blood-mercenaries plotting the murder of the City Magistrate.", punishment: "Ya-tsurushi (Tethered War Archery Execution)", defaultMethod: "archery_volley", defaultWeapon: "daikyu", bounty: 24 },
+      { crime: "Extortion of foreign Dutch envoys and desecration of the Shogunate vermilion seal.", punishment: "Kanabō-uchi (Crushing by Studded Iron Club)", defaultMethod: "kanabo_smash", defaultWeapon: "kanabo", bounty: 20 }
     ],
     SAMURAI: [
-      { crime: "Violating the Buke Shohatto: unapproved marriage alliance and illegal firearms stockpile.", punishment: "Seppuku (Ritual Disembowelment with Kaishaku)", defaultMethod: "daki_kubi", defaultWeapon: "katana_kotetsu" },
-      { crime: "Drawing steel inside Edo Castle's Pine Corridor (Matsu no Ōrōka) without imperial permit.", punishment: "Seppuku under Shogunate Ometsuke Supervision", defaultMethod: "daki_kubi", defaultWeapon: "katana_kotetsu" },
-      { crime: "Embezzlement of 8,000 ryo from the Osaka Castle garrison treasury.", punishment: "Seppuku with Flawless Daki-kubi Execution", defaultMethod: "daki_kubi", defaultWeapon: "katana_kanemoto" }
+      { crime: "Violating the Buke Shohatto: unapproved marriage alliance and illegal firearms stockpile.", punishment: "Seppuku (Ritual Disembowelment with Kaishaku)", defaultMethod: "daki_kubi", defaultWeapon: "katana_kotetsu", bounty: 35 },
+      { crime: "Drawing steel inside Edo Castle's Pine Corridor (Matsu no Ōrōka) without imperial permit.", punishment: "Seppuku under Shogunate Ometsuke Supervision", defaultMethod: "daki_kubi", defaultWeapon: "katana_kotetsu", bounty: 40 },
+      { crime: "Embezzlement of 8,000 ryo from the Osaka Castle garrison treasury.", punishment: "Seppuku with Flawless Daki-kubi Execution", defaultMethod: "daki_kubi", defaultWeapon: "katana_kanemoto", bounty: 38 }
     ],
     WARLORD: [
-      { crime: "Secretly repairing outer moats and stonework of domain castle in defiance of the Shogun.", punishment: "Dō-giri (Bisecting at Waist with Greatsword)", defaultMethod: "dogiri", defaultWeapon: "nodachi" },
-      { crime: "High Treason: Contacting the Emperor in Kyoto to issue an imperial anti-Tokugawa decree.", punishment: "Ushi-zaki (Drawn and Quartered by Raging Oxen)", defaultMethod: "ushizaki", defaultWeapon: "oxen" },
-      { crime: "Poisoning an inspecting Shogunate Censor (*Metsuke*) to hide starvation in rice quotas.", punishment: "Ushi-zaki (Oxen Dismemberment)", defaultMethod: "ushizaki", defaultWeapon: "oxen" }
+      { crime: "Secretly repairing outer moats and stonework of domain castle in defiance of the Shogun.", punishment: "Dō-giri (Bisecting at Waist with Greatsword)", defaultMethod: "dogiri", defaultWeapon: "nodachi", bounty: 60 },
+      { crime: "High Treason: Contacting the Emperor in Kyoto to issue an imperial anti-Tokugawa decree.", punishment: "Ushi-zaki (Drawn and Quartered by Raging Oxen)", defaultMethod: "ushizaki", defaultWeapon: "oxen", bounty: 75 },
+      { crime: "Poisoning an inspecting Shogunate Censor (*Metsuke*) to hide starvation in rice quotas.", punishment: "Ushi-zaki (Oxen Dismemberment)", defaultMethod: "ushizaki", defaultWeapon: "oxen", bounty: 65 }
     ],
     SHOGUNATE: [
-      { crime: "Grand Regicide Conspiracy: Attempting to poison the young Shogun to seize Regency.", punishment: "Ushi-zaki (Drawn and Quartered by Oxen)", defaultMethod: "ushizaki", defaultWeapon: "oxen" },
-      { crime: "Conspiring with rebellious clans to sell Shogunate naval powder reserves to foreign galleons.", punishment: "Kamayude (Boiling Alive in Oil on Sumida River)", defaultMethod: "kamayude", defaultWeapon: "cauldron" },
-      { crime: "Forging the Great Shogunate Vermilion Seal (*Shuin*) to annex neighboring daimyo domains.", punishment: "Dō-giri (Waist Bisecting with Five-Foot Cleaver)", defaultMethod: "dogiri", defaultWeapon: "nodachi" }
+      { crime: "Grand Regicide Conspiracy: Attempting to poison the young Shogun to seize Regency.", punishment: "Ushi-zaki (Drawn and Quartered by Oxen)", defaultMethod: "ushizaki", defaultWeapon: "oxen", bounty: 100 },
+      { crime: "Conspiring with rebellious clans to sell Shogunate naval powder reserves to foreign galleons.", punishment: "Kamayude (Boiling Alive in Oil on Sumida River)", defaultMethod: "kamayude", defaultWeapon: "cauldron", bounty: 90 },
+      { crime: "Forging the Great Shogunate Vermilion Seal (*Shuin*) to annex neighboring daimyo domains.", punishment: "Dō-giri (Waist Bisecting with Five-Foot Cleaver)", defaultMethod: "dogiri", defaultWeapon: "nodachi", bounty: 85 }
+    ],
+    DAIKAN: [
+      { crime: "Extorting double tax tribute from drought-stricken peasants and drowning local elders.", punishment: "Nokogiri-biki (Bamboo Saw Public Pillory Execution)", defaultMethod: "nokogiri", defaultWeapon: "bamboo_saw", bounty: 45 }
+    ],
+    ASHIGARU: [
+      { crime: "Abandoning castle post during fire watch and stealing official Shogunate armaments.", punishment: "Gokumon (Decapitation followed by salt-cured head exhibition)", defaultMethod: "gokumon", defaultWeapon: "katana_dodanuki", bounty: 16 }
+    ],
+    ASSASSIN: [
+      { crime: "Administering wolfsbane poison to senior magistrates inside the pleasure quarters.", punishment: "Mizuzeme (Drowning Immersion in River Salt Water)", defaultMethod: "mizuzeme", defaultWeapon: "water_cage", bounty: 32 }
+    ],
+    KABUKI: [
+      { crime: "Staging banned satirical plays lampooning the Shogun's lineage and inciting town riots.", punishment: "Hiaburi (Execution by Fire at the Stake)", defaultMethod: "hiaburi", defaultWeapon: "pyre_torch", bounty: 26 }
+    ],
+    CLERIC: [
+      { crime: "Preaching heterodox insurrection and harboring escaped ronin inside mountain temples.", punishment: "Haritsuke (Spear Crucifixion on Sacred Ridge)", defaultMethod: "haritsuke", defaultWeapon: "yari", bounty: 28 }
+    ],
+    SMUGGLER: [
+      { crime: "Armed piracy against official rice transports in the Inland Sea and trade with Dutch vessels.", punishment: "Kusarigama-zanshu (Decapitation by Weighted Sickle Cleave)", defaultMethod: "kusarigama_cleave", defaultWeapon: "kusarigama", bounty: 30 }
     ]
   },
 
@@ -1172,14 +1377,15 @@ const Procedural = {
     if (!chosenCaste) chosenCaste = "PEASANT";
 
     const casteInfo = this.castes.find(c => c.key === chosenCaste) || this.castes[0];
-    const isFemale = Math.random() < 0.15 && chosenCaste !== "WARLORD" && chosenCaste !== "SHOGUNATE";
+    const isFemale = (chosenCaste === "ASSASSIN") || (Math.random() < 0.15 && chosenCaste !== "WARLORD" && chosenCaste !== "SHOGUNATE");
     const firstName = isFemale ? this.getRandom(this.firstNamesFemale) : this.getRandom(this.firstNamesMale);
-    const isNoble = chosenCaste === "SAMURAI" || chosenCaste === "WARLORD" || chosenCaste === "SHOGUNATE";
+    const isNoble = chosenCaste === "SAMURAI" || chosenCaste === "WARLORD" || chosenCaste === "SHOGUNATE" || chosenCaste === "DAIKAN";
     const surname = isNoble ? this.getRandom(this.surnamesNoble) : this.getRandom(this.surnamesCommon);
     const fullName = isNoble ? `${surname} ${firstName}` : `${firstName} ${surname}`;
     const alias = `"${this.getRandom(this.aliases)}"`;
 
-    const crimeObj = this.getRandom(this.casteCrimes[chosenCaste]);
+    const crimesList = this.casteCrimes[chosenCaste] || this.casteCrimes.PEASANT;
+    const crimeObj = this.getRandom(crimesList);
     const era = this.getRandom(this.eras);
     const year = Math.floor(Math.random() * 15) + 1;
     const caseId = `CASE #${Math.floor(Math.random() * 800) + 100} · ${era.toUpperCase()} ${year}`;
@@ -1188,20 +1394,16 @@ const Procedural = {
     const demeanor = this.getRandom(this.demeanors);
     const deathPoem = this.getRandom(this.deathPoems);
 
-    let narrative = "";
-    if (chosenCaste === "PEASANT") {
-      narrative = `Hailing from the rural fringes of the province, ${fullName} broke the strict mobility edicts of the Shogunate. Driven by tax extraction and ruinous rice tithes, the accused gathered sympathizers in open insubordination.`;
-    } else if (chosenCaste === "MERCHANT") {
-      narrative = `Operating within the licensed merchant quarters of Edo, ${fullName} amassed illicit fortunes by violating trade monopolies and price ceilings. Having subverted guild regulations, the Magistracy ordered all assets forfeit.`;
-    } else if (chosenCaste === "RONIN") {
-      narrative = `Once sworn to a feudal banner now abolished by Shogunate order, ${fullName} discarded buke status to take up highway robbery. Having shed appointed magistrate blood, the court stripped all ancestral rights.`;
-    } else if (chosenCaste === "SAMURAI") {
-      narrative = `A hereditary retainer bound by the Buke Shohatto, ${fullName} committed an unpardonable breach of courtly allegiance. The bloodline is accorded the solemn privilege of self-disembowelment with Kaishaku.`;
-    } else if (chosenCaste === "WARLORD") {
-      narrative = `Lord of a domain producing thousands of koku, ${fullName} plotted secretly against the Tokugawa peace, fortifying castles and courting prohibited imperial favor. The Senior Council has ordered lineage extinction.`;
-    } else {
-      narrative = `Holding supreme proximity to the Bakufu inner council, ${fullName} abused ministerial seals to conspire against the ruling family. Treason from within the administrative heart of Edo is met with total dismemberment.`;
-    }
+    // Procedural Portrait DNA for Canvas Ukiyo-e
+    const portraitSeed = {
+      skinTone: this.getRandom(["#e8dfce", "#decca8", "#c8b088", "#efdec4"]),
+      robeColor: this.getRandom(["#2b3542", "#52372b", "#364536", "#63323f", "#1e1e24", "#705634"]),
+      hairStyle: isFemale ? "shimada" : this.getRandom(["chonmage", "wild", "shaved", "ronin_loose"]),
+      facialHair: (!isFemale && Math.random() < 0.4) ? this.getRandom(["stubble", "mustache", "goatee"]) : "none",
+      monSymbol: this.getRandom(["circle", "diamond", "square", "cross", "triad"])
+    };
+
+    let narrative = `Convicted under the supreme jurisdiction of ${court}. Feudal registry records condemn ${fullName} for capital crimes endangering the celestial peace of the Tokugawa Bakufu.`;
 
     return {
       id: caseId,
@@ -1213,6 +1415,7 @@ const Procedural = {
       court: court,
       crime: crimeObj.crime,
       punishment: crimeObj.punishment,
+      bounty: crimeObj.bounty || 20,
       defaultMethod: crimeObj.defaultMethod,
       defaultWeapon: crimeObj.defaultWeapon,
       physiqueLabel: phys.label,
@@ -1220,187 +1423,57 @@ const Procedural = {
       demeanor: demeanor,
       deathPoem: deathPoem,
       narrative: narrative,
+      portrait: portraitSeed,
       executed: false
     };
   }
 };
 
 // ==========================================
-// 2. WEAPONS CATALOG
+// 2. WEAPONS CATALOG (14 Weapons)
 // ==========================================
 const WEAPONS = [
-  {
-    id: "katana_kanemoto",
-    name: 'Kanemoto "Magoroku" Katana',
-    jp: "濃州兼元 刀",
-    type: "Sword (Saijo Ō-wazamono)",
-    meterSpeed: 1.0,
-    sweetRatio: 0.05,
-    zoneRatio: 0.18,
-    desc: "Clamshell convex edge (niku). Superior backbone for severing thick cervical vertebrae without edge rolling."
-  },
-  {
-    id: "katana_kotetsu",
-    name: 'Nagasone Kotetsu Katana',
-    jp: "長曽祢虎徹 刀",
-    type: "Sword (Saijo Ō-wazamono)",
-    meterSpeed: 1.35,
-    sweetRatio: 0.032,
-    zoneRatio: 0.12,
-    desc: "Unrivaled razor keenness. Glides through sinew like water. Required for the surgical partial cut of Daki-kubi."
-  },
-  {
-    id: "katana_dodanuki",
-    name: 'Dō-danuki Masakuni Katana',
-    jp: "同田貫正国 刀",
-    type: "Heavy Battlefield Katana",
-    meterSpeed: 0.85,
-    sweetRatio: 0.07,
-    zoneRatio: 0.22,
-    desc: "Broad, thick spine forged for crushing armor and bone. Immense torque, forgiving on misaligned strokes."
-  },
-  {
-    id: "nodachi",
-    name: 'Ō-dachi / Zanbatō (Execution Cleaver)',
-    jp: "大太刀 / 斬馬刀",
-    type: "Five-Foot Two-Handed Cleaver",
-    meterSpeed: 0.75,
-    sweetRatio: 0.08,
-    zoneRatio: 0.26,
-    desc: "Massive two-handed greatsword used specifically for bisecting condemned warlords at the waist (Dō-giri)."
-  },
-  {
-    id: "kanabo",
-    name: 'Iron-Studded Club (Kanabō)',
-    jp: "金砕棒 (鉄棒)",
-    type: "Blunt Bone-Pulverizer",
-    meterSpeed: 0.9,
-    sweetRatio: 0.065,
-    zoneRatio: 0.20,
-    desc: "Heavy octagonal iron club encrusted with hardened steel studs. Delivers catastrophic crushing force to ribcages and skulls."
-  },
-  {
-    id: "yari",
-    name: 'Sankaku-Yari & Naginata (Cross-Spears)',
-    jp: "三角槍・長刀",
-    type: "Polearm & Cross Spears",
-    meterSpeed: 1.15,
-    sweetRatio: 0.045,
-    zoneRatio: 0.16,
-    desc: "Twin triangular-bladed thrusting spears used in Haritsuke crucifixion to simultaneously pierce liver, heart, and lungs."
-  },
-  {
-    id: "daikyu",
-    name: 'Shikidō Daikyū (Heavy War Longbow)',
-    jp: "式道大弓 (28kg Draw)",
-    type: "Asymmetrical War Archery",
-    meterSpeed: 1.25,
-    sweetRatio: 0.04,
-    zoneRatio: 0.15,
-    desc: "Heavy bamboo and sumac laminated warbow. Fires barbed armor-piercing iron chisel arrows (Watakusi) at tethered targets."
-  },
-  {
-    id: "oxen",
-    name: 'Four Draught Oxen & Iron Chains',
-    jp: "四頭牛裂き具",
-    type: "Beast Dismemberment Rig",
-    meterSpeed: 0.8,
-    sweetRatio: 0.09,
-    zoneRatio: 0.28,
-    desc: "Four iron-shod work bulls bound to the condemned's wrists and ankles, whipped to tear the torso into four quarters."
-  },
-  {
-    id: "cauldron",
-    name: 'Ishikawa Iron Boiling Cauldron',
-    jp: "五右衛門風呂 (大釜)",
-    type: "Thermal Iron Vat",
-    meterSpeed: 0.95,
-    sweetRatio: 0.06,
-    zoneRatio: 0.22,
-    desc: "Massive cast-iron kettle suspended over blazing wood coals, filled with boiling water and burning lamp oil."
-  }
+  { id: "katana_kanemoto", name: 'Kanemoto "Magoroku" Katana', jp: "濃州兼元 刀", type: "Sword (Saijo Ō-wazamono)", meterSpeed: 1.0, sweetRatio: 0.05, zoneRatio: 0.18, desc: "Clamshell convex edge (niku). Superior backbone for severing thick vertebrae without edge rolling." },
+  { id: "katana_kotetsu", name: 'Nagasone Kotetsu Katana', jp: "長曽祢虎徹 刀", type: "Sword (Saijo Ō-wazamono)", meterSpeed: 1.35, sweetRatio: 0.032, zoneRatio: 0.12, desc: "Unrivaled razor keenness. Glides through sinew like water. Required for the surgical cut of Daki-kubi." },
+  { id: "katana_dodanuki", name: 'Dō-danuki Masakuni Katana', jp: "同田貫正国 刀", type: "Heavy Battlefield Katana", meterSpeed: 0.85, sweetRatio: 0.07, zoneRatio: 0.22, desc: "Broad, thick spine forged for crushing armor and bone. Immense torque, forgiving on misaligned strokes." },
+  { id: "katana_masamune", name: 'Sōshū Masamune Masterwork', jp: "相州正宗 宝刀", type: "Legendary Sacred Katana", meterSpeed: 1.15, sweetRatio: 0.065, zoneRatio: 0.24, desc: "Perfect nie and chikei grain structure. Harmonizes steel hardness with elasticity; pristine Kaishaku." },
+  { id: "katana_muramasa", name: 'Muramasa Cursed Demon Blade', jp: "妖刀村正 刀", type: "Bloodthirsty Odachi-Katana", meterSpeed: 1.45, sweetRatio: 0.028, zoneRatio: 0.28, desc: "Terrifying violent sharpness. Punishes slight blunders with edge nicks, but yields immense bounty." },
+  { id: "nodachi", name: 'Ō-dachi / Zanbatō (Execution Cleaver)', jp: "大太刀 / 斬馬刀", type: "Five-Foot Two-Handed Cleaver", meterSpeed: 0.75, sweetRatio: 0.08, zoneRatio: 0.26, desc: "Massive two-handed greatsword used specifically for bisecting condemned warlords at the waist (Dō-giri)." },
+  { id: "bisento", name: 'Heavy Bisento Cleaver Polearm', jp: "眉尖刀 (重薙刀)", type: "Massive Curved Cleaver", meterSpeed: 0.80, sweetRatio: 0.075, zoneRatio: 0.24, desc: "Cleft polearm bearing a heavy, thick falchion blade. Slices cleanly through armor and lumbar bone." },
+  { id: "kanabo", name: 'Iron-Studded Club (Kanabō)', jp: "金砕棒 (鉄棒)", type: "Blunt Bone-Pulverizer", meterSpeed: 0.9, sweetRatio: 0.065, zoneRatio: 0.20, desc: "Heavy octagonal iron club encrusted with hardened steel studs. Delivers catastrophic crushing force." },
+  { id: "otsuchi", name: 'Ōtsuchi War Mallet', jp: "大槌 (攻城戦槌)", type: "Massive Hardwood & Iron Hammer", meterSpeed: 0.70, sweetRatio: 0.09, zoneRatio: 0.25, desc: "Heavy wooden mallet wrapped in iron bands. Crushes cranial vaults and ribs with shocking finality." },
+  { id: "kusarigama", name: 'Heavy Executioner Kusarigama', jp: "公儀御用 鎖鎌", type: "Weighted Chain & Scythe", meterSpeed: 1.20, sweetRatio: 0.042, zoneRatio: 0.18, desc: "Weighted iron ball pins the convict's cervical neck; heavy curved sickle follows with a decisive drag." },
+  { id: "yari", name: 'Sankaku-Yari & Naginata (Cross-Spears)', jp: "三角槍・長刀", type: "Polearm & Cross Spears", meterSpeed: 1.15, sweetRatio: 0.045, zoneRatio: 0.16, desc: "Twin triangular-bladed thrusting spears used in Haritsuke crucifixion to pierce liver, heart, and lungs." },
+  { id: "daikyu", name: 'Shikidō Daikyū (Heavy War Longbow)', jp: "式道大弓 (28kg Draw)", type: "Asymmetrical War Archery", meterSpeed: 1.25, sweetRatio: 0.04, zoneRatio: 0.15, desc: "Heavy bamboo and sumac laminated warbow. Fires barbed armor-piercing iron chisel arrows (Watakusi)." },
+  { id: "oxen", name: 'Four Draught Oxen & Iron Chains', jp: "四頭牛裂き具", type: "Beast Dismemberment Rig", meterSpeed: 0.8, sweetRatio: 0.09, zoneRatio: 0.28, desc: "Four iron-shod work bulls bound to wrists and ankles, whipped to tear the torso into four quarters." },
+  { id: "cauldron", name: 'Ishikawa Iron Boiling Cauldron', jp: "五右衛門風呂 (大釜)", type: "Thermal Iron Vat", meterSpeed: 0.95, sweetRatio: 0.06, zoneRatio: 0.22, desc: "Massive cast-iron kettle suspended over blazing wood coals, filled with boiling river water and oil." },
+  { id: "bamboo_saw", name: 'Serrated Bamboo Saw (Nokogiri)', jp: "竹鋸挽き 具", type: "Public Sawing Torture Rig", meterSpeed: 0.70, sweetRatio: 0.08, zoneRatio: 0.24, desc: "Pillory timber stock with dull bamboo saws placed for passersby to inflict retribution." },
+  { id: "pyre_torch", name: 'Pine Pitch Stake & Pyre', jp: "火焙り 薪柱", type: "Thermal Burning Stake", meterSpeed: 0.90, sweetRatio: 0.065, zoneRatio: 0.22, desc: "Cedar stake stacked with dried brushwood soaked in lamp oil. Codified sentence for grand arson." },
+  { id: "water_cage", name: 'Submerged Iron River Cage', jp: "水責め 沈下鉄籠", type: "Hydrostatic Immersion Rig", meterSpeed: 1.05, sweetRatio: 0.055, zoneRatio: 0.19, desc: "Perforated iron cage lowered beneath the Sumida river currents for drowning executions." }
 ];
 
 // ==========================================
-// 3. EXECUTION PROCEDURES & RITES
+// 3. EXECUTION PROCEDURES & RITES (13 Rites)
 // ==========================================
 const METHODS = [
-  {
-    id: "daki_kubi",
-    name: "Daki-Kubi (抱き首 - Hugging Neck)",
-    weaponAllowed: ["katana_kotetsu", "katana_kanemoto"],
-    targetRatio: 0.50,
-    casteBonus: ["SAMURAI"],
-    desc: "Ceremonial Kaishaku strike. Blade slices through spine and carotid arteries but halts 1mm before cutting anterior throat skin. The head bows into the chest with immaculate grace."
-  },
-  {
-    id: "zanshu",
-    name: "Zanshu Clean Decapitation (斬首)",
-    weaponAllowed: ["katana_kanemoto", "katana_dodanuki", "katana_kotetsu"],
-    targetRatio: 0.65,
-    casteBonus: ["RONIN", "PEASANT", "MERCHANT"],
-    desc: "Standard penal decapitation. Decisive diagonal cleave over the sand trench. The head is washed, salted, and mounted on Suzugamori pillory spikes (Sarashikubi)."
-  },
-  {
-    id: "dogiri",
-    name: "Dō-giri / Koshi-kiri (腰斬 - Bisecting at the Waist)",
-    weaponAllowed: ["nodachi", "katana_dodanuki"],
-    targetRatio: 0.70,
-    casteBonus: ["WARLORD", "SHOGUNATE"],
-    desc: "Vile Sengoku punishment. Condemned is strapped horizontally across an oak block. A sweeping two-handed cleaver severs the torso in half at the lumbar spine."
-  },
-  {
-    id: "kanabo_smash",
-    name: "Kanabō-uchi (金棒砕き - Cranial & Rib Pulverization)",
-    weaponAllowed: ["kanabo"],
-    targetRatio: 0.60,
-    casteBonus: ["RONIN", "PEASANT"],
-    desc: "Brutal blunt execution. The executor swings the massive studded club with full hip torque, shattering ribcage, spine, and skull into pulverized fragments."
-  },
-  {
-    id: "haritsuke",
-    name: "Haritsuke (磔 - Cross-Spear Crucifixion)",
-    weaponAllowed: ["yari"],
-    targetRatio: 0.55,
-    casteBonus: ["PEASANT", "RONIN"],
-    desc: "Bound to a cedar cross with hemp cords. Two executioners plunge triangular spears diagonally from under the ribs, crossing through liver, heart, and exiting the shoulders."
-  },
-  {
-    id: "archery_volley",
-    name: "Ya-tsurushi (矢吊り - Tethered Archery Execution)",
-    weaponAllowed: ["daikyu"],
-    targetRatio: 0.45,
-    casteBonus: ["RONIN", "WARLORD"],
-    desc: "Condemned is bound to an earthen archery mound. Standing at 28 meters, the executor draws a 28-kilogram warbow to drive three chisel-point arrows through vital cardiac points."
-  },
-  {
-    id: "ushizaki",
-    name: "Ushi-zaki (牛裂き - Drawn and Quartered by Oxen)",
-    weaponAllowed: ["oxen"],
-    targetRatio: 0.75,
-    casteBonus: ["WARLORD", "SHOGUNATE"],
-    desc: "Wrists and ankles secured with wet hemp to four heavy oxen facing the cardinal directions. A sudden torch ignition drives the beasts in four directions, tearing the torso apart."
-  },
-  {
-    id: "kamayude",
-    name: "Kamayude (釜茹で - Boiling Alive in Iron Cauldron)",
-    weaponAllowed: ["cauldron"],
-    targetRatio: 0.62,
-    casteBonus: ["MERCHANT", "SHOGUNATE"],
-    desc: "Legendary fate of Ishikawa Goemon. Condemned is lowered into a bubbling iron kettle of boiling oil and river water until cardiac collapse and complete thermal dissolution."
-  },
-  {
-    id: "ryo_kuruma",
-    name: "Ryō-kuruma Post-Mortem Cut (両車 - Dual-Pelvis Test)",
-    weaponAllowed: ["katana_dodanuki", "katana_kanemoto", "nodachi"],
-    targetRatio: 0.80,
-    casteBonus: ["MERCHANT", "RONIN"],
-    desc: "After decapitation by assistants, the warm cadaver is bound over the clay Dotan mound to appraise if the blade can slice through both hipbones in one stroke."
-  }
+  { id: "daki_kubi", name: "Daki-Kubi (抱き首 - Hugging Neck)", targetRatio: 0.50, casteBonus: ["SAMURAI"], desc: "Ceremonial Kaishaku strike. Slices spine and arteries but halts 1mm before cutting throat skin. Head rests on chest." },
+  { id: "zanshu", name: "Zanshu Clean Decapitation (斬首)", targetRatio: 0.65, casteBonus: ["RONIN", "PEASANT", "MERCHANT", "ASHIGARU"], desc: "Standard penal decapitation. Decisive diagonal cut over the sand trench. Head mounted on Suzugamori pillory." },
+  { id: "dogiri", name: "Dō-giri / Koshi-kiri (腰斬 - Waist Bisecting)", targetRatio: 0.70, casteBonus: ["WARLORD", "SHOGUNATE", "DAIKAN"], desc: "Vile Sengoku punishment. Strapped across an oak block. Sweeping two-handed cleaver bisects torso at lumbar spine." },
+  { id: "kanabo_smash", name: "Kanabō-uchi (金棒砕き - Cranial Pulverization)", targetRatio: 0.60, casteBonus: ["RONIN", "PEASANT"], desc: "Brutal blunt execution. Full hip torque swing shatters ribcage, thoracic spine, and skull into fragments." },
+  { id: "haritsuke", name: "Haritsuke (磔 - Cross-Spear Crucifixion)", targetRatio: 0.55, casteBonus: ["PEASANT", "RONIN", "CLERIC"], desc: "Bound to cedar cross. Two executioners plunge triangular spears diagonally through liver, heart, and shoulders." },
+  { id: "archery_volley", name: "Ya-tsurushi (矢吊り - Tethered War Archery)", targetRatio: 0.45, casteBonus: ["RONIN", "WARLORD"], desc: "Bound to archery post at 28 meters. Executor fires heavy chisel-point war arrows into cardiac threshold." },
+  { id: "ushizaki", name: "Ushi-zaki (牛裂き - Quartered by Oxen)", targetRatio: 0.75, casteBonus: ["WARLORD", "SHOGUNATE"], desc: "Wrists and ankles secured with wet hemp to four heavy oxen driven outward by sudden fire torches." },
+  { id: "kamayude", name: "Kamayude (釜茹で - Boiling Alive in Cauldron)", targetRatio: 0.62, casteBonus: ["MERCHANT", "SHOGUNATE"], desc: "Lowered into boiling oil and river water over bellows coals until cardiac collapse and thermal dissolution." },
+  { id: "ryo_kuruma", name: "Ryō-kuruma Post-Mortem Cut (両車 - Pelvic Test)", targetRatio: 0.80, casteBonus: ["MERCHANT", "RONIN"], desc: "Warm cadaver is bound over clay Dotan mound to appraise if the blade can slice through both hipbones." },
+  { id: "nokogiri", name: "Nokogiri-biki (鋸挽き - Public Sawing Pillory)", targetRatio: 0.58, casteBonus: ["DAIKAN", "PEASANT"], desc: "Condemned is entombed in ground pillory; executor oversees public retribution before delivering mercy cut." },
+  { id: "hiaburi", name: "Hiaburi (火焙り - Burning at the Stake)", targetRatio: 0.64, casteBonus: ["KABUKI", "MERCHANT"], desc: "Bound to pine pitch timber. Executioner coordinates bellows wind to manage flame engulfment." },
+  { id: "mizuzeme", name: "Mizuzeme (水責め - River Salt Submersion)", targetRatio: 0.52, casteBonus: ["ASSASSIN", "SMUGGLER"], desc: "Iron cage lowered into cold tidal current; executor triggers lock release at hydrostatic threshold." },
+  { id: "gokumon", name: "Gokumon (獄門 - Salt-Cured Decapitation)", targetRatio: 0.68, casteBonus: ["ASHIGARU", "RONIN"], desc: "Precision nape severance followed by immediate salt-curing of the severed head for 3 days of public exposure." },
+  { id: "kusarigama_cleave", name: "Kusarigama-zanshu (鎖鎌断頭 - Weighted Sickle Cleave)", targetRatio: 0.54, casteBonus: ["SMUGGLER"], desc: "Weighted flying chain pins carotid vertebrae followed by an explosive hooked draw-slice through the neck." }
 ];
 
 // ==========================================
-// 4. AUDIO SYNTHESIS ENGINE (iOS SAFE)
+// 4. AUDIO SYNTHESIS ENGINE (iOS Safe)
 // ==========================================
 const Sound = {
   ctx: null,
@@ -1449,6 +1522,24 @@ const Sound = {
       gain.connect(this.ctx.destination);
       osc.start(t);
       osc.stop(t + 0.1);
+    } catch (e) {}
+  },
+  playAnvil() {
+    try {
+      this.init();
+      if (!this.ctx) return;
+      const t = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1800, t);
+      osc.frequency.exponentialRampToValueAtTime(400, t + 0.35);
+      gain.gain.setValueAtTime(0.8, t);
+      gain.gain.exponentialRampToValueAtTime(0.001, t + 0.4);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start(t);
+      osc.stop(t + 0.4);
     } catch (e) {}
   },
   playSwordSlash() {
@@ -1528,14 +1619,23 @@ window.Game = {
   selectedWeaponIndex: 0,
   selectedMethodIndex: 0,
 
-  // New Staging Options
-  interrogationChoice: 0, // 0: Silent, 1: Defiant
-  platformChoice: 0,      // 0: Sand, 1: Dotan clay
-  purificationChoice: 0,   // 0: Water (+tolerance), 1: Raw
+  // Economy & Upgrades
+  ryo: 40,
+  upgrades: {
+    polish: 0,     // 0-3 (+10%, +20%, +30% sweetspot width)
+    clamshell: 0,  // 0-3 (reduces bone chip penalty)
+    tsukaito: 0,   // 0-3 (slows needle oscillation in Phase 1 & 2)
+    heavystuds: 0  // 0-3 (+cleave radius on blunt/great weapons)
+  },
+
+  // Staging
+  interrogationChoice: 0,
+  platformChoice: 0,
+  purificationChoice: 0,
 
   // Dual-Phase Execution State
-  currentPhase: 1, // 1: Breathing/Stance, 2: Torque/Release
-  phase1Accuracy: 1.0, // multiplier
+  currentPhase: 1,
+  phase1Accuracy: 1.0,
 
   honor: 100,
   executionCount: 0,
@@ -1549,7 +1649,7 @@ window.Game = {
 
   init() {
     this.criminals = [];
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 14; i++) {
       this.criminals.push(Procedural.generateCriminal());
     }
     this.filterCaste('ALL');
@@ -1568,6 +1668,16 @@ window.Game = {
       this.resizeCanvas();
       if (this.isExecuting) this.updateMeterGeometry();
     });
+
+    this.updateStatsBar();
+  },
+
+  updateStatsBar() {
+    document.getElementById('stat-ryo').innerText = `${this.ryo} 両`;
+    document.getElementById('stat-honor').innerText = this.honor;
+    document.getElementById('stat-count').innerText = this.executionCount;
+    const forgeRyo = document.getElementById('forge-ryo-display');
+    if (forgeRyo) forgeRyo.innerText = `${this.ryo} 両`;
   },
 
   showScreen(id) {
@@ -1589,6 +1699,12 @@ window.Game = {
     this.renderCaseList();
     this.renderActiveDossier();
     this.showScreen('screen-dossier');
+  },
+
+  openForgeScreen() {
+    Sound.playAnvil();
+    this.renderForge();
+    this.showScreen('screen-forge');
   },
 
   generateBatchAndOpen() {
@@ -1658,7 +1774,7 @@ window.Game = {
       item.innerHTML = `
         <div class="case-item-info">
           <h4>${c.name.split(' ')[0]} ${c.executed ? '✓' : ''}</h4>
-          <span>${c.casteKey}</span>
+          <span>${c.casteKey} · ${c.bounty}両</span>
         </div>
         <span class="caste-badge ${c.casteBadge}">${c.casteKey.substring(0, 4)}</span>
       `;
@@ -1673,20 +1789,254 @@ window.Game = {
     document.getElementById('doc-code').innerText = c.id;
     document.getElementById('doc-name').innerText = c.name;
     document.getElementById('doc-alias').innerText = c.alias;
-    document.getElementById('doc-caste').innerText = c.casteLabel;
+    document.getElementById('doc-caste').innerText = `${c.casteLabel} [Bounty: ${c.bounty}両]`;
     document.getElementById('doc-court').innerText = c.court;
     document.getElementById('doc-crime').innerText = c.crime;
     document.getElementById('doc-punishment').innerText = c.punishment;
     document.getElementById('doc-demeanor').innerText = c.demeanor;
     document.getElementById('doc-physique').innerText = c.physiqueLabel;
     document.getElementById('doc-narrative').innerText = c.narrative;
-    document.getElementById('doc-seal').innerText = c.casteKey;
+    document.getElementById('portrait-code-label').innerText = c.id.split('·')[0];
+
+    // Paint procedural Ukiyo-e woodblock portrait on Canvas
+    this.drawUkiyoePortrait(c);
 
     const matchedMethodIdx = METHODS.findIndex(m => m.id === c.defaultMethod);
     this.selectedMethodIndex = matchedMethodIdx >= 0 ? matchedMethodIdx : 1;
 
     const matchedWeaponIdx = WEAPONS.findIndex(w => w.id === c.defaultWeapon);
     this.selectedWeaponIndex = matchedWeaponIdx >= 0 ? matchedWeaponIdx : 0;
+  },
+
+  drawUkiyoePortrait(convict, isAftermath = false) {
+    const canvas = document.getElementById('portrait-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width;
+    const h = canvas.height;
+
+    // Paper washi background
+    ctx.fillStyle = convict.portrait.skinTone ? "#e6decb" : "#e6dfd1";
+    ctx.fillRect(0, 0, w, h);
+
+    // Sumi ink woodblock border lines
+    ctx.strokeStyle = "#241d18";
+    ctx.lineWidth = 3;
+    ctx.strokeRect(2, 2, w - 4, h - 4);
+
+    // Kimono shoulders & chest
+    ctx.fillStyle = convict.portrait.robeColor;
+    ctx.beginPath();
+    ctx.moveTo(10, h);
+    ctx.lineTo(w / 2, 78);
+    ctx.lineTo(w - 10, h);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    // Kimono collar V
+    ctx.strokeStyle = "#e8dec8";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(w / 2 - 14, h);
+    ctx.lineTo(w / 2, 85);
+    ctx.lineTo(w / 2 + 14, h);
+    ctx.stroke();
+
+    // Neck
+    ctx.fillStyle = convict.portrait.skinTone;
+    ctx.fillRect(w / 2 - 12, 60, 24, 25);
+    ctx.strokeStyle = "#241d18";
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(w / 2 - 12, 60, 24, 25);
+
+    // Head oval
+    ctx.beginPath();
+    ctx.ellipse(w / 2, 48, 20, 26, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+
+    // Facial Features (Sumi-e style brushstrokes)
+    ctx.fillStyle = "#181410";
+    ctx.strokeStyle = "#181410";
+    ctx.lineWidth = 1.2;
+
+    // Eyebrows
+    const browAngle = convict.demeanor === "Defiant" ? -0.2 : (convict.demeanor === "Enraged" ? -0.35 : 0.05);
+    ctx.beginPath();
+    ctx.moveTo(w / 2 - 14, 40);
+    ctx.lineTo(w / 2 - 4, 38 + (browAngle * 10));
+    ctx.moveTo(w / 2 + 14, 40);
+    ctx.lineTo(w / 2 + 4, 38 + (browAngle * 10));
+    ctx.stroke();
+
+    // Slanted eyes
+    ctx.beginPath();
+    ctx.ellipse(w / 2 - 8, 44, 4, 1.5, -0.1, 0, Math.PI * 2);
+    ctx.ellipse(w / 2 + 8, 44, 4, 1.5, 0.1, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Nose line & mouth
+    ctx.beginPath();
+    ctx.moveTo(w / 2, 46);
+    ctx.lineTo(w / 2 - 2, 54);
+    ctx.lineTo(w / 2 + 2, 55);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(w / 2 - 6, 62);
+    ctx.lineTo(w / 2 + 6, 62);
+    ctx.stroke();
+
+    // Hair
+    ctx.fillStyle = "#16120f";
+    if (convict.portrait.hairStyle === "chonmage") {
+      // Shaved crown with folded topknot
+      ctx.beginPath();
+      ctx.arc(w / 2, 34, 19, Math.PI, 0);
+      ctx.fill();
+      // Topknot stick
+      ctx.fillRect(w / 2 - 3, 16, 6, 16);
+    } else if (convict.portrait.hairStyle === "wild") {
+      ctx.beginPath();
+      ctx.arc(w / 2, 42, 24, Math.PI * 0.8, Math.PI * 2.2);
+      ctx.fill();
+    } else if (convict.portrait.hairStyle === "shimada") {
+      // Elegant female coiffure
+      ctx.beginPath();
+      ctx.ellipse(w / 2, 32, 23, 16, 0, 0, Math.PI * 2);
+      ctx.fill();
+    } else {
+      ctx.beginPath();
+      ctx.arc(w / 2, 40, 21, Math.PI * 0.9, Math.PI * 2.1);
+      ctx.fill();
+    }
+
+    // Mon seal mark on robe shoulder
+    ctx.strokeStyle = "#d4a745";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.arc(28, h - 22, 6, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // Red Vermilion Executioner Stamp if executed
+    if (convict.executed || isAftermath) {
+      ctx.fillStyle = "rgba(186, 25, 25, 0.75)";
+      ctx.font = "bold 13px serif";
+      ctx.save();
+      ctx.translate(w / 2, h / 2);
+      ctx.rotate(-0.3);
+      ctx.strokeStyle = "#8a1111";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(-32, -14, 64, 28);
+      ctx.fillText("処刑済", -22, 5);
+      ctx.restore();
+    }
+  },
+
+  // -------------------------
+  // FORGE & UPGRADES SYSTEM
+  // -------------------------
+  renderForge() {
+    this.updateStatsBar();
+    const container = document.getElementById('forge-items-container');
+    if (!container) return;
+    container.innerHTML = "";
+
+    const forgeTrees = [
+      {
+        key: "polish",
+        catTitle: "Hadori Blade Polishing (刃艶・研磨)",
+        level: this.upgrades.polish,
+        levels: [
+          { name: "Rough Arato Stone Polish", cost: 15, desc: "Cleans tarnished hamon. Sweet-spot timing window expands +10%." },
+          { name: "Fine Uchigumori Finish", cost: 30, desc: "Silken edge refinement. Sweet-spot timing window expands +20%." },
+          { name: "Hadori Mirror Masterwork", cost: 50, desc: "Sublime Shogunate master polish. Sweet-spot window expands +30%." }
+        ]
+      },
+      {
+        key: "clamshell",
+        catTitle: "Hamaguri-ba Edge Geometry (蛤刃・肉置)",
+        level: this.upgrades.clamshell,
+        levels: [
+          { name: "Convex Niku Reinforcement", cost: 20, desc: "Cushions resistance through dense vertebrae. Reduces bone blunder penalty by 30%." },
+          { name: "Hardened Ha-Saki Profile", cost: 35, desc: "Steel edge repels microscopic chips. Bone blunder honor penalty halved." },
+          { name: "Apex Armor-Splitter Contour", cost: 60, desc: "Zero blade deformation across all skeletal structures. Prevents honor penalties on blunders." }
+        ]
+      },
+      {
+        key: "tsukaito",
+        catTitle: "Tsuka-Ito Silk & Samegawa Grip (柄糸・鮫皮)",
+        level: this.upgrades.tsukaito,
+        levels: [
+          { name: "Emperor Ray-skin Samegawa Wrap", cost: 18, desc: "Firm palm friction. Phase 1 breathing oscillation slowed by 15%." },
+          { name: "Crossed Silk Ito Binding", cost: 32, desc: "Absorbs executor pulse vibration. Breathing and strike needle slowed by 25%." },
+          { name: "Gold-Inlaid Menuki Balance", cost: 45, desc: "Flawless kinetic balance. Phase 1 lock grants guaranteed 1.35x sweet-spot multiplier." }
+        ]
+      },
+      {
+        key: "heavystuds",
+        catTitle: "Heavy Forge Masterworks (破砕具・重兵)",
+        level: this.upgrades.heavystuds,
+        levels: [
+          { name: "Tempered Kanabō Diamond Studs", cost: 20, desc: "Encrusted iron studs widen impact cleave radius for blunt weapons by +15%." },
+          { name: "Daikyū Laminated Sumac Sinew", cost: 35, desc: "Increases archery penetration; archery target sweet-spot widened +25%." },
+          { name: "Cast-Iron Bellows & Heavy Chains", cost: 55, desc: "Reinforced oxen harnesses and cauldron furnaces maximize executioner stipends +25%." }
+        ]
+      }
+    ];
+
+    forgeTrees.forEach(tree => {
+      const catDiv = document.createElement('div');
+      catDiv.className = "forge-category";
+
+      const header = document.createElement('div');
+      header.className = "forge-cat-title";
+      header.innerHTML = `<span>${tree.catTitle}</span><span>RANK ${tree.level}/3</span>`;
+      catDiv.appendChild(header);
+
+      tree.levels.forEach((lvl, idx) => {
+        const card = document.createElement('div');
+        const isPurchased = idx < tree.level;
+        const isNext = idx === tree.level;
+        card.className = `upgrade-card ${isPurchased ? 'maxed' : ''}`;
+
+        let actionBtn = "";
+        if (isPurchased) {
+          actionBtn = `<span style="color: var(--gold-bright); font-size: 10px; font-weight: bold;">[FORGED]</span>`;
+        } else if (isNext) {
+          actionBtn = `<button class="btn btn-gold" style="padding: 4px 10px; font-size: 10px;" onclick="Game.buyUpgrade('${tree.key}', ${lvl.cost})">FORGE (${lvl.cost}両)</button>`;
+        } else {
+          actionBtn = `<span style="color: #665; font-size: 10px;">LOCKED</span>`;
+        }
+
+        card.innerHTML = `
+          <div class="upgrade-info">
+            <h4>${lvl.name}</h4>
+            <p>${lvl.desc}</p>
+          </div>
+          <div class="upgrade-meta">
+            <span class="upgrade-cost">${lvl.cost} 両</span>
+            ${actionBtn}
+          </div>
+        `;
+        catDiv.appendChild(card);
+      });
+
+      container.appendChild(catDiv);
+    });
+  },
+
+  buyUpgrade(key, cost) {
+    if (this.ryo >= cost) {
+      Sound.playAnvil();
+      this.ryo -= cost;
+      this.upgrades[key]++;
+      this.updateStatsBar();
+      this.renderForge();
+    } else {
+      Sound.playHyoshigi();
+    }
   },
 
   openPrepScreen() {
@@ -1747,7 +2097,6 @@ window.Game = {
     this.renderPrepCards();
   },
 
-  // Open Staging Screen (Jisei & Platform config)
   openStagingScreen() {
     Sound.playHyoshigi();
     const c = this.filteredCriminals[this.activeCriminalIndex];
@@ -1789,7 +2138,6 @@ window.Game = {
     const sweetEl = document.getElementById('meter-sweetspot');
 
     if (this.currentPhase === 1) {
-      // Phase 1: Center sine cadence
       const targetWidth = width * 0.28;
       const centerPx = width * 0.50;
       zoneEl.style.left = `${centerPx - (targetWidth / 2)}px`;
@@ -1799,16 +2147,22 @@ window.Game = {
       sweetEl.style.left = `${centerPx - (sweetWidth / 2)}px`;
       sweetEl.style.width = `${sweetWidth}px`;
     } else {
-      // Phase 2: Weapon + Method Strike Target
       let zoneRatio = curWeapon.zoneRatio;
       let sweetRatio = curWeapon.sweetRatio;
 
-      // Apply Staging purification bonus
-      if (this.purificationChoice === 0) {
-        zoneRatio *= 1.25;
-        sweetRatio *= 1.25;
+      // Forge Polish upgrades
+      sweetRatio *= (1.0 + (this.upgrades.polish * 0.10));
+
+      // Forge Heavy Spikes upgrades for blunt/great weapons
+      if (curWeapon.id === 'kanabo' || curWeapon.id === 'otsuchi' || curWeapon.id === 'nodachi') {
+        zoneRatio *= (1.0 + (this.upgrades.heavystuds * 0.08));
       }
-      // Apply Platform Dotan bonus
+
+      // Staging purification
+      if (this.purificationChoice === 0) {
+        zoneRatio *= 1.20;
+        sweetRatio *= 1.20;
+      }
       if (this.platformChoice === 1) {
         sweetRatio *= 1.15;
       }
@@ -1861,12 +2215,15 @@ window.Game = {
     const curCase = this.filteredCriminals[this.activeCriminalIndex];
     const cursor = document.getElementById('meter-cursor');
 
-    let baseSpeed = 0.0075;
+    // Tsuka-ito upgrade slows drift
+    const speedDamping = 1.0 - (this.upgrades.tsukaito * 0.08);
+
+    let baseSpeed = 0.0075 * speedDamping;
     if (this.currentPhase === 1) {
-      baseSpeed = 0.0065 * (curCase && curCase.demeanor === 'Enraged' ? 1.3 : 1.0);
-      if (this.interrogationChoice === 0) baseSpeed *= 0.85; // Solitude calms
+      baseSpeed = 0.0065 * speedDamping * (curCase && curCase.demeanor === 'Enraged' ? 1.3 : 1.0);
+      if (this.interrogationChoice === 0) baseSpeed *= 0.85;
     } else {
-      baseSpeed = (0.0088 * curWeapon.meterSpeed) / (curCase ? curCase.hardness : 1.0);
+      baseSpeed = (0.0088 * speedDamping * curWeapon.meterSpeed) / (curCase ? curCase.hardness : 1.0);
     }
 
     const loop = () => {
@@ -1899,18 +2256,16 @@ window.Game = {
     if (!this.isExecuting) return;
 
     if (this.currentPhase === 1) {
-      // Complete Phase 1: Lock Stance
       Sound.playHyoshigi();
       const distFromCenter = Math.abs(this.needleNorm - 0.50);
       if (distFromCenter < 0.05) {
-        this.phase1Accuracy = 1.25; // Perfect posture bonus
+        this.phase1Accuracy = 1.25 + (this.upgrades.tsukaito * 0.05);
       } else if (distFromCenter < 0.15) {
         this.phase1Accuracy = 1.0;
       } else {
-        this.phase1Accuracy = 0.75; // Shaky breathing
+        this.phase1Accuracy = 0.75;
       }
 
-      // Transition to Phase 2: Decisive Strike
       this.currentPhase = 2;
       document.getElementById('exec-hud-phase').innerText = "PHASE 2: TORQUE & RELEASE (発勁)";
       document.getElementById('meter-action-label').innerText = `${WEAPONS[this.selectedWeaponIndex].type.toUpperCase()} · STRIKE PATH`;
@@ -1922,7 +2277,6 @@ window.Game = {
       this.needleDir = 1;
       this.updateMeterGeometry();
     } else {
-      // Complete Phase 2: Deliver Sentence
       this.triggerDecisiveStrike();
     }
   },
@@ -1935,7 +2289,7 @@ window.Game = {
     const curWeapon = WEAPONS[this.selectedWeaponIndex];
     const curCase = this.filteredCriminals[this.activeCriminalIndex];
 
-    if (curWeapon.id === 'kanabo') {
+    if (curWeapon.id === 'kanabo' || curWeapon.id === 'otsuchi') {
       Sound.playHeavyCrunch();
     } else if (curWeapon.id === 'daikyu') {
       Sound.playBowRelease();
@@ -1960,51 +2314,50 @@ window.Game = {
     }
 
     const distFromCenter = Math.abs(this.needleNorm - curMethod.targetRatio);
-    let halfSweet = (curWeapon.sweetRatio * this.phase1Accuracy) / 2;
+    let halfSweet = (curWeapon.sweetRatio * (1.0 + (this.upgrades.polish * 0.10)) * this.phase1Accuracy) / 2;
     let halfZone = (curWeapon.zoneRatio * this.phase1Accuracy) / 2;
 
     let verdict = "";
     let narrative = "";
     let record = "";
     let honorDelta = 0;
+    let earnedRyo = 0;
+
+    const baseBounty = curCase.bounty || 20;
 
     if (distFromCenter <= halfSweet) {
       verdict = "DIVINE MASTERY · 神妙の断罪";
+      earnedRyo = Math.floor(baseBounty * (1.4 + (this.upgrades.heavystuds * 0.1)));
+      honorDelta = 25;
+
       if (curMethod.id === 'daki_kubi') {
-        narrative = `With posture locked in immaculate breathing, the Kotetsu blade parted the cervical vertebrae like warm silk, halting exactly one layer of skin prior to the throat. ${curCase.name}'s head bowed forward into their crossed arms in serene repose. The Ometsuke censor bowed from the tatami in profound silence. Honor was preserved without a single drop on the white mats.`;
+        narrative = `With posture locked in immaculate breathing, the blade parted the cervical vertebrae like warm silk, halting exactly one layer of skin prior to the throat. ${curCase.name}'s head bowed forward into their crossed arms in serene repose. The Ometsuke censor bowed from the tatami in profound silence. Ancestral honor was preserved without a single drop on the white mats.`;
         record = `SAIDAN-MEI: "Temmei Era - Yamada Asaemon executed Kaishaku on ${curCase.name}. Daki-kubi achieved; skin bridge held steadfast."`;
-        honorDelta = 25;
       } else if (curMethod.id === 'dogiri') {
         narrative = `A terrifying, seismic stroke of the five-foot Ōdachi. The cleaver cleft through the lumbar spine, aorta, and abdominal wall in one uninterrupted blur, burying four inches into the oak cutting block. ${curCase.name} was cleanly bisected at the waist, fulfilling the ancient Sengoku treason sentence.`;
         record = `SHOGUNATE DISMEMBERMENT RECORD: "Waist-cleave (Dō-giri) achieved in single pass on ${curCase.name}. Torso cleanly halved."`;
-        honorDelta = 20;
       } else if (curMethod.id === 'kanabo_smash') {
         narrative = `With total hip rotation and full iron weight, the studded Kanabō crushed through the ribcage and thoracic spine with thunderous resonance. Bone splintered like dry bamboo; the condemned died instantly of catastrophic cardiac arrest.`;
         record = `PUNISHMENT ROLL: "Studded club execution executed on ${curCase.name}. Complete skeletal dissolution achieved."`;
-        honorDelta = 15;
       } else if (curMethod.id === 'haritsuke') {
         narrative = `Both cross-spears plunged in exact diagonal synchronization beneath the lower ribs. The triangular blades sliced through liver and lungs simultaneously, crossing in the chest and protruding through the upper shoulders. Death was immediate and unblemished.`;
         record = `HARITSUKE EXECUTION SCROLL: "Dual spear crucifixion carried out upon ${curCase.name}. Vital organs pierced with symmetrical precision."`;
-        honorDelta = 20;
       } else if (curMethod.id === 'archery_volley') {
         narrative = `Drawing the 28kg Daikyū to the ear, your release sent the heavy chisel-head arrow whistling across the yard. The shaft struck dead-center through the sternum, pinning the condemned rigidly to the cedar post with acoustic shock.`;
         record = `ARCHERY LEDGER: "Tethered post execution. Chisel-head war arrow struck dead center of cardiac threshold."`;
-        honorDelta = 20;
       } else if (curMethod.id === 'ushizaki') {
         narrative = `The four oxen plunged forward in simultaneous explosive traction. The reinforced chains tore the four limbs clean from the torso in a fraction of a second. The Shogunate edict against grand treason was fulfilled with terrifying finality.`;
         record = `HIGH TREASON DISMEMBERMENT: "Ushi-zaki completed on ${curCase.name}. Four-point limb separation verified by the town magistrates."`;
-        honorDelta = 20;
       } else if (curMethod.id === 'kamayude') {
         narrative = `The bubbling cauldron of boiling oil engulfed the condemned. With exact bellows temperature control, the heart seized instantly from thermal shock, sparing unnecessary protracted screams while satisfying the severe public deterrence edict.`;
         record = `CAULDRON RECORD: "Kamayude thermal punishment administered upon ${curCase.name} on the banks of the Sumida."`;
-        honorDelta = 15;
       } else {
         narrative = `A magnificent, seamless diagonal pass. The blade sheared through muscle, bone, and spinal canal without the slightest shudder. The severed head dropped cleanly into the sand bucket, ready for washing and Suzugamori pillory mounting.`;
         record = `ZANSHU SCROLL: "Clean decapitation executed on ${curCase.name}. Edge unmarred; head remanded for public pillory."`;
-        honorDelta = 15;
       }
     } else if (distFromCenter <= halfZone) {
       verdict = "JUDICIAL SENTENCE FULFILLED · 処刑執行";
+      earnedRyo = baseBounty;
       if (curMethod.id === 'daki_kubi') {
         narrative = `The stroke was swift, but downward torque carried a fraction too deep. The anterior skin bridge tore free and the head rolled across the courtyard sand. Legal for a commoner; slightly crude for a high lord.`;
         honorDelta = (curCase.casteKey === 'SAMURAI' || curCase.casteKey === 'WARLORD') ? -10 : 5;
@@ -2015,22 +2368,30 @@ window.Game = {
       record = `RECORD: "Sentence carried out under the Kujikata Osadamegaki on ${curCase.name}."`;
     } else {
       verdict = "AWKWARD BLUNDER · 不覚の過ち";
-      narrative = `The weapon struck off-axis against dense bone. The strike caught and hitched in the skeletal structure, requiring secondary force to complete the severance. The Magistrate frowned from the gallery; the smith will inspect the edge for severe denting.`;
+      earnedRyo = Math.floor(baseBounty * 0.4);
+      narrative = `The weapon struck off-axis against dense bone. The strike caught and hitched in the skeletal structure, requiring secondary force to complete the severance. The Magistrate frowned from the gallery; the smith inspected the edge for severe denting.`;
       record = `DISCIPLINARY ENTRY: "Execution executed with resistance. Asaemon lineage honor penalized."`;
-      honorDelta = -20;
+      
+      // Clamshell edge upgrades mitigate blunder penalty
+      const penaltyMitigation = this.upgrades.clamshell === 3 ? 0 : (this.upgrades.clamshell === 2 ? 0.5 : (this.upgrades.clamshell === 1 ? 0.7 : 1.0));
+      honorDelta = Math.floor(-20 * penaltyMitigation);
     }
 
     curCase.executed = true;
-    this.honor = Math.max(0, Math.min(180, this.honor + honorDelta));
+    this.ryo += earnedRyo;
+    this.honor = Math.max(0, Math.min(200, this.honor + honorDelta));
     this.executionCount++;
 
-    document.getElementById('stat-honor').innerText = this.honor;
-    document.getElementById('stat-count').innerText = this.executionCount;
+    this.updateStatsBar();
+
+    // Re-draw aftermath woodblock portrait with blood seal
+    this.drawUkiyoePortrait(curCase, true);
 
     setTimeout(() => {
       document.getElementById('res-verdict').innerText = verdict;
       document.getElementById('res-narrative').innerText = narrative;
       document.getElementById('res-record').innerText = record;
+      document.getElementById('res-bounty-val').innerText = `+${earnedRyo} 両 (Total Treasury: ${this.ryo}両)`;
       this.showScreen('screen-result');
     }, 550);
   },
@@ -2190,7 +2551,7 @@ window.Game = {
       ctx.arc(execX + (w * 0.04), h - (h * 0.45), headRadius * 0.85, 0, Math.PI * 2);
       ctx.fill();
 
-      if (curWeapon.id === 'kanabo') {
+      if (curWeapon.id === 'kanabo' || curWeapon.id === 'otsuchi') {
         ctx.strokeStyle = "#403830";
         ctx.lineWidth = 9;
         ctx.beginPath();
